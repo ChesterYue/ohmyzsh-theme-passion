@@ -81,7 +81,7 @@ output_command_execute_after() {
     local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEIGIN}");
     COMMAND_TIME_BEIGIN="-20200325"
     local length_cost=${#cost};
-    if [ "$length_cost" = "4" ];        # 例如 .032 前面要拼一个 0
+    if [ "$length_cost" = "4" ];
     then
         cost="0${cost}"
     fi
