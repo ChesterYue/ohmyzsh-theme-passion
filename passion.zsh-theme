@@ -1,4 +1,16 @@
 
+# gdate for macOS
+# REF: https://apple.stackexchange.com/questions/135742/time-in-milliseconds-since-epoch-in-the-terminal
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    {
+        gdate
+    } || {
+        echo "\n$fg_bold[yellow]zsh theme passion needs gdate in coreutils:$reset_color"
+        echo "$fg_bold[green]brew install coreutils;\n$reset_color";
+    }
+fi
+
+
 # time
 function real_time() {
     local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
