@@ -77,7 +77,7 @@ output_command_execute_after() {
     time="${color_time}${time}${color_reset}";
 
     # cost
-    local time_end="$(gdate +%s.%3N)";
+    local time_end="$(current_time_millis)";
     local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEIGIN}");
     COMMAND_TIME_BEIGIN="-20200325"
     local length_cost=${#cost};
@@ -97,7 +97,29 @@ output_command_execute_after() {
 # command execute before
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
 preexec() {
-    COMMAND_TIME_BEIGIN="$(gdate +%s.%3N)";
+    COMMAND_TIME_BEIGIN="$(current_time_millis)";
+}
+
+current_time_millis() {
+    local time_millis;
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # Linux
+        time_millis="$(date +%s.%3N)";
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        time_millis="$(gdate +%s.%3N)";
+    elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+    elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+    elif [[ "$OSTYPE" == "win32" ]]; then
+        # I'm not sure this can happen.
+    elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+    else
+        # Unknown.
+    fi
+    echo $time_millis;
 }
 
 
