@@ -10,9 +10,9 @@ An oh-my-zsh theme.
 ## Usage
 REF: [Oh-My-Zsh External themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes)
 
-### Trouble Shooting
+## Trouble Shooting
 
-#### macOS
-passsion.zsh-theme uses cmd ```gdate``` to get current time in milliseconds which is not installed default in macOS.
+### macOS
+passsion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds which is not installed default in macOS.
 
 run ```brew install coreutils;``` to get ```gdate```;
