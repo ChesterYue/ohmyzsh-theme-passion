@@ -13,6 +13,6 @@ REF: [Oh-My-Zsh External themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Externa
 ## Trouble Shooting
 
 ### macOS
-passsion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds which is not installed default in macOS.
+passsion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds which is not installed by default in macOS.
 
-run ```brew install coreutils;``` to get ```gdate```;
+to get ```gdate``` by running ```brew install coreutils;```
