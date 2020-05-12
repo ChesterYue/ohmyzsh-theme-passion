@@ -26,7 +26,8 @@ function real_time() {
 # directory
 function directory() {
     local color="%{$fg_no_bold[cyan]%}";
-    local directory="$(pwd)";
+    # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
+    local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
     echo "${color}${directory}${color_reset}";
 }
