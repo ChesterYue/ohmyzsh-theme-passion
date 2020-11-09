@@ -53,13 +53,16 @@ function update_command_status() {
     local arrow="";
     local color_reset="%{$reset_color%}";
     local reset_font="%{$fg_no_bold[white]%}";
-    if $1;
+    COMMAND_RESULT=$1;
+    if $COMMAND_RESULT;
     then
         arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
     else
         arrow="%{$fg_bold[red]%}❱❱❱";
     fi
     COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
+    echo $COMMAND_RESULT
+    export COMMAND_RESULT=$COMMAND_RESULT
 }
 update_command_status true;
 
