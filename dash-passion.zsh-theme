@@ -62,9 +62,17 @@ function directory() {
 # git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}git(%{$fg_no_bold[red]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) %{$fg_no_bold[red]%}⇡⇣";#⬣⎔⬢⬣⇵⇅
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) %{$fg_no_bold[red]%}⬢";#⬣⎔⬢⬣⇵⇅
 # ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) 🔥";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";#⬡
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%}) %{$fg_no_bold[green]%}⬡";#⬡
+
+# ZSH_THEME_GIT_PROMPT_REMOTE_STATUS_DETAILED=true;
+# ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE="%{$fg_no_bold[red]%}⇡"
+# ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE="%{$fg_no_bold[red]%}⇣"
+ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="$FG[005]⇡"
+ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX=""
+ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="$FG[005]⇣"
+ZSH_THEME_GIT_COMMITS_BEHIND_SUFFIX=""
 
 function update_git_status() {
     GIT_STATUS=$(git_prompt_info);
@@ -103,7 +111,7 @@ typeset +H my_orange="$FG[214]"
 
 # separator dashes size
 function afmagic_dashes {
-    local ratio=0.9
+    local ratio=1
     echo $((COLUMNS * ratio))
 }
 
@@ -224,9 +232,10 @@ TRAPALRM() {
 }
 
 
+
 # prompt
 # PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
 # PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
-PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
+PROMPT='$(real_time) $(directory) $(git_status)$(git_commits_ahead)$(git_commits_behind) $(command_status) ';
 # RPROMPT='%{$FG[242]%}%n@%m${color_reset}';
 RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
