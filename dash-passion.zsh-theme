@@ -50,7 +50,8 @@ function login_info() {
 
 # directory
 function directory() {
-    local color="%{$fg_no_bold[cyan]%}";
+    # local color="%{$fg_no_bold[cyan]%}";
+    local color="$FG[111]";
     # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
     local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
@@ -61,8 +62,9 @@ function directory() {
 # git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}git(%{$fg_no_bold[red]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) 🔥";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) %{$fg_no_bold[red]%}⇡⇣";#⬣⎔⬢⬣⇵⇅
+# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) 🔥";
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";#⬡
 
 function update_git_status() {
     GIT_STATUS=$(git_prompt_info);
@@ -226,4 +228,5 @@ TRAPALRM() {
 # PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
 # PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
 PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
+# RPROMPT='%{$FG[242]%}%n@%m${color_reset}';
 RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
