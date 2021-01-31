@@ -222,9 +222,8 @@ TRAPALRM() {
 }
 
 
-
 # prompt
 # PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
 # PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
 PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
-RPROMPT='%{$FG[242]%}%n@%m${color_reset}';
+RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
