@@ -8,6 +8,7 @@ An oh-my-zsh theme.
 
 * real time prompt.
 * command running time cost prompt.
+* command running error hint.
 
 ## Usage
 
