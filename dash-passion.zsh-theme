@@ -91,41 +91,55 @@ function vscode_git_status() {
   # This cannot use the prompt constants, as they may be empty
   local -A prefix_constant_map
   prefix_constant_map=(
-    '\?\? '     'UNTRACKED'
-    '[MTARC][MTD] '  'STAGEDUNSTAGED'
-    '[MTARC]  '  'STAGED'
-    'D  '       'STAGED'
-    ' [AMD] '   'UNSTAGED'
-    '[DAU][DAU] ' 'UNMERGED'
-    'ahead'     'AHEAD'
-    'behind'    'BEHIND'
-    'diverged'  'DIVERGED'
-    'stashed'   'STASHED'
+    '\?\? '          'UNTRACKED'
+    '[MTARC][ MTD] '  'STAGED'
+    'D  '            'STAGED'
+    ' [AMTD] '       'UNSTAGED'
+    '[MTARC][MTD] '  'UNSTAGED'
+    '[DAU][DAU] '    'UNMERGED'
+    'ahead'          'AHEAD'
+    'behind'         'BEHIND'
+    'diverged'       'DIVERGED'
+    'stashed'        'STASHED'
   )
+
+    # '(?![DAU][DAU])[MTARCD][AMTD ] '    'STAGED'  # exclude the `[DAU][DAU]`
+    # '(?![DAU][DAU])[MTARCD ][AMTD] '    'UNSTAGED'
+#   prefix_constant_map=(
+#     '\?\? '     'UNTRACKED'
+#     '[MTARC][MTD] '  'STAGEDUNSTAGED'
+#     '[MTARC]  '  'STAGED'
+#     'D  '       'STAGED'
+#     ' [AMD] '   'UNSTAGED'
+#     '[DAU][DAU] ' 'UNMERGED'
+#     'ahead'     'AHEAD'
+#     'behind'    'BEHIND'
+#     'diverged'  'DIVERGED'
+#     'stashed'   'STASHED'
+#   )
 
   # Maps the internal constant to the prompt theme
   local -A constant_prompt_map
   constant_prompt_map=(
-    'UNTRACKED' "$ZSH_THEME_GIT_PROMPT_UNTRACKED"
-    'ADDED'     "$ZSH_THEME_GIT_PROMPT_ADDED"
-    'MODIFIED'  "$ZSH_THEME_GIT_PROMPT_MODIFIED"
-    'RENAMED'   "$ZSH_THEME_GIT_PROMPT_RENAMED"
-    'DELETED'   "$ZSH_THEME_GIT_PROMPT_DELETED"
-    'UNMERGED'  "$ZSH_THEME_GIT_PROMPT_UNMERGED"
-    'AHEAD'     "$(git_commits_ahead)"
-    'BEHIND'    "$(git_commits_behind)"
-    'DIVERGED'  "$ZSH_THEME_GIT_PROMPT_DIVERGED"
-    'STASHED'   "$ZSH_THEME_GIT_PROMPT_STASHED"
-    'STAGED'    "$ZSH_THEME_GIT_PROMPT_STAGED"
-    'UNSTAGED'  "$ZSH_THEME_GIT_PROMPT_UNSTAGED"
-    'STAGEDUNSTAGED'    "${ZSH_THEME_GIT_PROMPT_UNSTAGED}${ZSH_THEME_GIT_PROMPT_STAGED}"
+    'UNTRACKED'         "$ZSH_THEME_GIT_PROMPT_UNTRACKED"
+    'ADDED'             "$ZSH_THEME_GIT_PROMPT_ADDED"
+    'MODIFIED'          "$ZSH_THEME_GIT_PROMPT_MODIFIED"
+    'RENAMED'           "$ZSH_THEME_GIT_PROMPT_RENAMED"
+    'DELETED'           "$ZSH_THEME_GIT_PROMPT_DELETED"
+    'UNMERGED'          "$ZSH_THEME_GIT_PROMPT_UNMERGED"
+    'AHEAD'             "$(git_commits_ahead)"
+    'BEHIND'            "$(git_commits_behind)"
+    'DIVERGED'          "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+    'STASHED'           "$ZSH_THEME_GIT_PROMPT_STASHED"
+    'STAGED'            "$ZSH_THEME_GIT_PROMPT_STAGED"
+    'UNSTAGED'          "$ZSH_THEME_GIT_PROMPT_UNSTAGED"
   )
 
   # The order that the prompt displays should be added to the prompt
   local status_constants
   status_constants=(
     UNTRACKED ADDED MODIFIED RENAMED DELETED
-    STASHED UNMERGED AHEAD BEHIND DIVERGED STAGED UNSTAGED STAGEDUNSTAGED
+    STASHED UNMERGED AHEAD BEHIND DIVERGED STAGED UNSTAGED
   )
 
   local status_text
