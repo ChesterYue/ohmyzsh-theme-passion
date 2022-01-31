@@ -189,7 +189,9 @@ function update_git_status() {
             GIT_STATUS+=" ${git_status}";
         fi 
         GIT_STATUS+=${ZSH_THEME_GIT_PROMPT_END_SUFFIX};
-    fi 
+    else
+        GIT_STATUS=""
+    fi
 }
 
 function git_status() {
