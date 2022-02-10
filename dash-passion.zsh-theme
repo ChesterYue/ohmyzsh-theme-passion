@@ -173,6 +173,7 @@ function vscode_git_status() {
     done
   fi
 
+  local status_prefix
   # For each status prefix, do a regex comparison
   for status_prefix in ${(k)prefix_constant_map}; do
     local status_constant="${prefix_constant_map[$status_prefix]}"
