@@ -163,6 +163,8 @@ function vscode_git_status() {
   # If the tracking line exists, get and parse it
   if [[ "$status_lines[1]" =~ "^## [^ ]+ \[(.*)\]" ]]; then
     local branch_statuses
+    local match
+    local branch_status
     branch_statuses=("${(@s/,/)match}")
     for branch_status in $branch_statuses; do
       if [[ ! $branch_status =~ "(behind|diverged|ahead) ([0-9]+)?" ]]; then
