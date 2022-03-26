@@ -280,8 +280,15 @@ dash_passion_precmd() {
 
 }
 
-function __git_fetch_all() {
+function git_fetch_status() {
+  __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
   __git_prompt_git fetch -q --all 2>/dev/null
+  __git_prompt_git status 12>/dev/null
+}
+
+function chpwd() {
+  __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
+  __git_prompt_git status 12>/dev/null
 }
 
 # real time clock for zsh.
@@ -290,8 +297,8 @@ schedprompt() {
   emulate -L zsh
   zmodload -i zsh/sched
 
-  integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)__git_fetch_all]}
-  (( i )) || sched +30 __git_fetch_all # git_fetch_all for every 30 seconds.
+  integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)git_fetch_status]}
+  (( i )) || sched +120 git_fetch_status # git_fetch_all for every 30 seconds.
 
   # Remove existing event, so that multiple calls to
   # "schedprompt" work OK.  (You could put one in precmd to push
