@@ -1,3 +1,20 @@
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}❮%{$fg_no_bold[red]%}";
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}";
+ZSH_THEME_GIT_PROMPT_END_SUFFIX="%{$fg_no_bold[blue]%}❯%{$reset_color%}";
+
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓%{$reset_color%}"
+
+ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="$FG[005]⇡"
+ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="$FG[005]⇣"
+ZSH_THEME_GIT_COMMITS_BEHIND_SUFFIX="%{$reset_color%}"
+
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}+%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[yellow]%}*%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}⬢%{$reset_color%}"
+
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}!%{$reset_color%}"
+
 function strf_real_time() {
   local time_str;
   local format=${1:='%Y-%m-%d {%u} %H:%M:%S'}
@@ -28,30 +45,10 @@ function directory() {
   echo "${color}[${directory}]${color_reset}";
 }
 
-
-# git
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}❮%{$fg_no_bold[red]%}";
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}";
-ZSH_THEME_GIT_PROMPT_END_SUFFIX="%{$fg_no_bold[blue]%}❯%{$reset_color%}";
-
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓%{$reset_color%}"
-
-ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="$FG[005]⇡"
-ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="$FG[005]⇣"
-ZSH_THEME_GIT_COMMITS_BEHIND_SUFFIX="%{$reset_color%}"
-
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}+%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[yellow]%}*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}⬢%{$reset_color%}"
-
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}!%{$reset_color%}"
-
-
 function __git_branch() {
   local ref
-  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  ref=$(__git_prompt_git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) || return
   echo "${ZSH_THEME_GIT_PROMPT_PREFIX}${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 }
 
@@ -283,11 +280,18 @@ dash_passion_precmd() {
 
 }
 
+function __git_fetch_all() {
+  __git_prompt_git fetch -q --all 2>/dev/null
+}
+
 # real time clock for zsh.
 # https://stackoverflow.com/questions/2187829/constantly-updated-clock-in-zsh-prompt
 schedprompt() {
   emulate -L zsh
   zmodload -i zsh/sched
+
+  integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)__git_fetch_all]}
+  (( i )) || sched +30 __git_fetch_all # git_fetch_all for every 30 seconds.
 
   # Remove existing event, so that multiple calls to
   # "schedprompt" work OK.  (You could put one in precmd to push
@@ -303,6 +307,7 @@ schedprompt() {
   fi
 
   # This ensures we're not too far off the start of the minute
+  # update zle for every second.
   sched +1 schedprompt
 }
 
