@@ -15,6 +15,9 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}⬢%{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}!%{$reset_color%}"
 
+ZSH_THEME_GIT_FETCH_STATUS=0
+ZSH_THEME_GIT_FETCH_STATUS_INTERVAL=60
+
 function strf_real_time() {
   local time_str;
   local format=${1:='%Y-%m-%d {%u} %H:%M:%S'}
@@ -281,9 +284,12 @@ dash_passion_precmd() {
 }
 
 function git_fetch_status() {
+  [ ${ZSH_THEME_GIT_FETCH_STATUS} != "0" ] && return 0
+  ZSH_THEME_GIT_FETCH_STATUS=1
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
   __git_prompt_git fetch -q --all 2>/dev/null
   __git_prompt_git status 12>/dev/null
+  ZSH_THEME_GIT_FETCH_STATUS=0
 }
 
 function chpwd() {
@@ -298,7 +304,8 @@ schedprompt() {
   zmodload -i zsh/sched
 
   integer i=${"${(@)zsh_scheduled_events#*:*:}"[(I)git_fetch_status]}
-  (( i )) || sched +120 git_fetch_status # git_fetch_all for every 30 seconds.
+  # git_fetch_all periodically.
+  (( i )) || sched +${ZSH_THEME_GIT_FETCH_STATUS_INTERVAL} git_fetch_status
 
   # Remove existing event, so that multiple calls to
   # "schedprompt" work OK.  (You could put one in precmd to push
