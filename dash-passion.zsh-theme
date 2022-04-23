@@ -1,6 +1,7 @@
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}❮%{$fg_no_bold[red]%}";
+ZSH_THEME_GIT_RPROMPT_SEPARATOR="%{$fg_no_bold[black]%}::%{$reset_color%}";
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}%{$fg_no_bold[red]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}";
-ZSH_THEME_GIT_PROMPT_END_SUFFIX="%{$fg_no_bold[blue]%}❯%{$reset_color%}";
+ZSH_THEME_GIT_PROMPT_END_SUFFIX="%{$fg_no_bold[blue]%}%{$reset_color%}";
 
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✓%{$reset_color%}"
 
@@ -16,7 +17,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}⬢%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}!%{$reset_color%}"
 
 ZSH_THEME_GIT_FETCH_STATUS=0
-ZSH_THEME_GIT_FETCH_STATUS_INTERVAL=60
+ZSH_THEME_GIT_FETCH_STATUS_INTERVAL=6
 
 function strf_real_time() {
   local time_str;
@@ -45,7 +46,7 @@ function directory() {
   # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
   local directory="${PWD/#$HOME/~}";
   local color_reset="%{$reset_color%}";
-  echo "${color}[${directory}]${color_reset}";
+  echo "${color}[$(basename ${directory})]${color_reset}";
 }
 
 function __git_branch() {
@@ -165,8 +166,13 @@ function update_git_status() {
 }
 
 function git_status() {
+  local sep=${1:-''}
   update_git_status;
-  echo "${GIT_STATUS}"
+  if [ ! -z "${GIT_STATUS}" ]; then
+    echo "${GIT_STATUS}${sep}";
+  else
+    echo "${GIT_STATUS}";
+  fi
 }
 
 # command
@@ -178,9 +184,11 @@ function update_command_status() {
   export COMMAND_RESULT=$COMMAND_RESULT
   if $COMMAND_RESULT;
   then
-    arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
+    arrow="%{$fg_bold[green]%}⤏";
+    # arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
   else
-    arrow="%{$fg_bold[red]%}❱❱❱";
+    arrow="%{$fg_bold[red]%}⤏";
+    # arrow="%{$fg_bold[red]%}❱❱❱";
   fi
   COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
 }
@@ -245,11 +253,15 @@ output_command_execute_after() {
   local color_cost="$fg_no_bold[yellow]";
   cost="${color_cost}${cost}${color_reset}";
 
-  echo -e "${_time} ${cost} ${cmd}";
+  local echo_dark_gray="$fg_no_bold[black]"
+  echo -e "${_time} ${cost} ${cmd} ${echo_dark_gray}$(pwd)${color_reset}";
+  # echo -e "${_time} ${cost} ${cmd}";
 
   echo -e "";
-  local echo_dark_gray="\033[2;49;39m"
-  echo -e "$echo_dark_gray${(l.$(afmagic_dashes)..-.)}${color_reset}"
+  # local echo_dark_gray="\033[2;49;39m"
+  echo -e "${echo_dark_gray}${(l.$(afmagic_dashes)..-.)}${color_reset}"
+  # local echo_dark_gray="\033[2;49;39m"
+  # echo -e "${echo_dark_gray}${(l.$(afmagic_dashes)..-.)}${color_reset}"
 }
 
 
@@ -283,18 +295,23 @@ dash_passion_precmd() {
 
 }
 
-function git_fetch_status() {
-  [ ${ZSH_THEME_GIT_FETCH_STATUS} != "0" ] && return 0
-  ZSH_THEME_GIT_FETCH_STATUS=1
+function __git_fetch_status(){
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
   __git_prompt_git fetch -q --all 2>/dev/null
   __git_prompt_git status 12>/dev/null
+}
+
+function git_fetch_status() {
+  [ ${ZSH_THEME_GIT_FETCH_STATUS} != "0" ] && return 0
+  ZSH_THEME_GIT_FETCH_STATUS=1
+  __git_fetch_status &!
   ZSH_THEME_GIT_FETCH_STATUS=0
 }
 
 function chpwd() {
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
-  __git_prompt_git status 12>/dev/null
+  # __git_prompt_git status 12>/dev/null
+  __git_prompt_git gc -q >/dev/null &!
 }
 
 # real time clock for zsh.
@@ -328,8 +345,11 @@ schedprompt() {
 zmodload -i zsh/datetime
 
 setopt prompt_subst
-PROMPT='$(real_time) $(directory) $(git_status) $(command_status) ';
-RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
+# PROMPT='$(real_time) $(directory) $(git_status) $(command_status) ';
+# RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
+
+PROMPT='$(basename $(directory)) $(command_status) ';
+RPROMPT='$(git_status " ${ZSH_THEME_GIT_RPROMPT_SEPARATOR}") $(real_time) ${ZSH_THEME_GIT_RPROMPT_SEPARATOR} %{$FG[242]%}%n@%m${color_reset} ${ZSH_THEME_GIT_RPROMPT_SEPARATOR} $(battery_pct_prompt)';
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd dash_passion_precmd
