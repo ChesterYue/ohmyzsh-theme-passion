@@ -348,7 +348,7 @@ setopt prompt_subst
 # PROMPT='$(real_time) $(directory) $(git_status) $(command_status) ';
 # RPROMPT='%{$FG[242]%}%n@%m $(battery_pct_prompt)${color_reset}';
 
-PROMPT='$(basename $(directory)) $(command_status) ';
+PROMPT='$(directory) $(command_status) ';
 RPROMPT='$(git_status " ${ZSH_THEME_GIT_RPROMPT_SEPARATOR}") $(real_time) ${ZSH_THEME_GIT_RPROMPT_SEPARATOR} %{$FG[242]%}%n@%m${color_reset} ${ZSH_THEME_GIT_RPROMPT_SEPARATOR} $(battery_pct_prompt)';
 
 autoload -Uz add-zsh-hook
