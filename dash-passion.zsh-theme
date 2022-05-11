@@ -17,7 +17,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}⬢%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}!%{$reset_color%}"
 
 ZSH_THEME_GIT_FETCH_STATUS=0
-ZSH_THEME_GIT_FETCH_STATUS_INTERVAL=6
+ZSH_THEME_GIT_FETCH_STATUS_INTERVAL=360
 
 function strf_real_time() {
   local time_str;
@@ -310,8 +310,11 @@ function git_fetch_status() {
 
 function chpwd() {
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
-  # __git_prompt_git status 12>/dev/null
-  __git_prompt_git gc -q >/dev/null &!
+  __git_prompt_git status 12>/dev/null
+  __git_prompt_git status 12>/dev/null
+  __git_prompt_git status 12>/dev/null
+  __git_prompt_git status 12>/dev/null
+#   __git_prompt_git gc -q >/dev/null &!
 }
 
 # real time clock for zsh.
