@@ -46,7 +46,8 @@ function directory() {
   # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
   local directory="${PWD/#$HOME/~}";
   local color_reset="%{$reset_color%}";
-  echo "${color}[$(basename ${directory})]${color_reset}";
+  echo "${color}$(basename ${directory})${color_reset}";
+#   echo "${color}[$(basename ${directory})]${color_reset}";
 }
 
 function __git_branch() {
@@ -184,10 +185,12 @@ function update_command_status() {
   export COMMAND_RESULT=$COMMAND_RESULT
   if $COMMAND_RESULT;
   then
-    arrow="%{$fg_bold[green]%}⤏";
+    arrow="%{$fg_bold[green]%}➜";
+    # arrow="%{$fg_bold[green]%}⤏";
     # arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
   else
-    arrow="%{$fg_bold[red]%}⤏";
+    arrow="%{$fg_bold[red]%}➜"; 
+    # arrow="%{$fg_bold[red]%}⤏";
     # arrow="%{$fg_bold[red]%}❱❱❱";
   fi
   COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
