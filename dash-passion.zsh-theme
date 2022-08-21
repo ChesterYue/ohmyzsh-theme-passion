@@ -301,7 +301,6 @@ dash_passion_precmd() {
 function __git_fetch_status(){
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
   __git_prompt_git fetch -q --all 2>/dev/null
-  __git_prompt_git status 12>/dev/null
 }
 
 function git_fetch_status() {
@@ -313,11 +312,7 @@ function git_fetch_status() {
 
 function chpwd() {
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
-  __git_prompt_git status 12>/dev/null
-  __git_prompt_git status 12>/dev/null
-  __git_prompt_git status 12>/dev/null
-  __git_prompt_git status 12>/dev/null
-#   __git_prompt_git gc -q >/dev/null &!
+  __git_prompt_git update-index --refresh --assume-unchanged
 }
 
 # real time clock for zsh.
