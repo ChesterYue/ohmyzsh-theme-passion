@@ -312,7 +312,7 @@ function git_fetch_status() {
 
 function chpwd() {
   __git_prompt_git rev-parse --is-inside-work-tree &>/dev/null || return 0
-  __git_prompt_git update-index --refresh --assume-unchanged
+  __git_prompt_git update-index --refresh --assume-unchanged -q &>/dev/null
 }
 
 # real time clock for zsh.
