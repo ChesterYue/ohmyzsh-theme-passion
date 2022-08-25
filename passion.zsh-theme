@@ -1,19 +1,20 @@
 # GLOBALS
-PROMPT_TIME_COLOR=cyan
+# See colors with `spectrum_ls`
+PROMPT_TIME_COLOR=200
 PROMPT_TIME_FORMAT="+%H:%M:%S MT"
 PROMPT_LOGIN_COLOR=cyan
-PROMPT_DIR_COLOR=cyan
-GIT_PROMPT_COLOR=blue
-GIT_BRANCH_COLOR=red
-GIT_DIRTY_COLOR=blue
-GIT_CLEAN_COLOR=blue
-COMMAND_ARROW_1_COLOR=red
-COMMAND_ARROW_2_COLOR=yellow
-COMMAND_ARROW_3_COLOR=green
-COMMAND_ARROW_ERROR=red
+PROMPT_DIR_COLOR=039
+GIT_PROMPT_COLOR=228
+GIT_BRANCH_COLOR=051
+GIT_DIRTY_COLOR=red
+GIT_CLEAN_COLOR=green
+COMMAND_ARROW_1_COLOR=051
+COMMAND_ARROW_2_COLOR=039
+COMMAND_ARROW_3_COLOR=200
+COMMAND_ARROW_ERROR=160
 COMMAND_RESULT_SUCCESS_COLOR=green
 COMMAND_RESULT_ERROR_COLOR=red
-COMMAND_RESULT_TIME_COLOR=cyan
+COMMAND_RESULT_TIME_COLOR=yellow
 COMMAND_RESULT_TIME_FORMAT="+%H:%M:%S MT"
 COMMAND_RESULT_COST_COLOR=cyan
 
@@ -34,7 +35,7 @@ fi
 
 # time
 function real_time() {
-    local color="%{$fg_no_bold[$PROMPT_TIME_COLOR]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
+    local color="%{$FG[$PROMPT_TIME_COLOR]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
     local time="[$(date $PROMPT_TIME_FORMAT)]";
     local color_reset="%{$reset_color%}";
     echo "${color}${time}${color_reset}";
@@ -69,7 +70,7 @@ function login_info() {
 
 # directory
 function directory() {
-    local color="%{$fg_no_bold[$PROMPT_DIR_COLOR]%}";
+    local color="%{$FG[$PROMPT_DIR_COLOR]%}";
     # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
     local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
@@ -78,7 +79,7 @@ function directory() {
 
 
 # git
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[$GIT_PROMPT_COLOR]%}git(%{$fg_no_bold[$GIT_BRANCH_COLOR]%}";
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[$GIT_PROMPT_COLOR]%}git(%{$FG[$GIT_BRANCH_COLOR]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[$GIT_DIRTY_COLOR]%}) 🔥";
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[$GIT_CLEAN_COLOR]%})";
@@ -101,9 +102,9 @@ function update_command_status() {
     export COMMAND_RESULT=$COMMAND_RESULT
     if $COMMAND_RESULT;
     then
-        arrow="%{$fg_bold[$COMMAND_ARROW_1_COLOR]%}❱%{$fg_bold[$COMMAND_ARROW_2_COLOR]%}❱%{$fg_bold[$COMMAND_ARROW_3_COLOR]%}❱";
+        arrow="%{$fg_bold[white]%}%{$FG[$COMMAND_ARROW_1_COLOR]%}❱%{$FG[$COMMAND_ARROW_2_COLOR]%}❱%{$FG[$COMMAND_ARROW_3_COLOR]%}❱";
     else
-        arrow="%{$fg_bold[$COMMAND_ARROW_ERROR]%}❱❱❱";
+        arrow="$fg_bold[white]%}%{$FG[$COMMAND_ARROW_ERROR]%}❱❱❱";
     fi
     COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
 }
