@@ -1,3 +1,21 @@
+# GLOBALS
+PROMPT_TIME_COLOR=cyan
+PROMPT_TIME_FORMAT="+%H:%M:%S MT"
+PROMPT_LOGIN_COLOR=cyan
+PROMPT_DIR_COLOR=cyan
+GIT_PROMPT_COLOR=blue
+GIT_BRANCH_COLOR=red
+GIT_DIRTY_COLOR=blue
+GIT_CLEAN_COLOR=blue
+COMMAND_ARROW_1_COLOR=red
+COMMAND_ARROW_2_COLOR=yellow
+COMMAND_ARROW_3_COLOR=green
+COMMAND_ARROW_ERROR=red
+COMMAND_RESULT_SUCCESS_COLOR=green
+COMMAND_RESULT_ERROR_COLOR=red
+COMMAND_RESULT_TIME_COLOR=cyan
+COMMAND_RESULT_TIME_FORMAT="+%H:%M:%S MT"
+COMMAND_RESULT_COST_COLOR=cyan
 
 # gdate for macOS
 # REF: https://apple.stackexchange.com/questions/135742/time-in-milliseconds-since-epoch-in-the-terminal
@@ -16,22 +34,23 @@ fi
 
 # time
 function real_time() {
-    local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
-    local time="[$(date +%H:%M:%S)]";
+    local color="%{$fg_no_bold[$PROMPT_TIME_COLOR]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
+    local time="[$(date $PROMPT_TIME_FORMAT)]";
     local color_reset="%{$reset_color%}";
     echo "${color}${time}${color_reset}";
 }
 
 # login_info
 function login_info() {
-    local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
+    local color="%{$fg_no_bold[$PROMPT_LOGIN_COLOR]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
     local ip
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # Linux
         ip="$(ifconfig | grep ^eth1 -A 1 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS
-        ip="$(ifconfig | grep ^en1 -A 4 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
+        # still not perfect
+        ip="$(ifconfig | grep ^en -A 4 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
     elif [[ "$OSTYPE" == "cygwin" ]]; then
         # POSIX compatibility layer and Linux environment emulation for Windows
     elif [[ "$OSTYPE" == "msys" ]]; then
@@ -50,7 +69,7 @@ function login_info() {
 
 # directory
 function directory() {
-    local color="%{$fg_no_bold[cyan]%}";
+    local color="%{$fg_no_bold[$PROMPT_DIR_COLOR]%}";
     # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
     local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
@@ -59,10 +78,10 @@ function directory() {
 
 
 # git
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}git(%{$fg_no_bold[red]%}";
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[$GIT_PROMPT_COLOR]%}git(%{$fg_no_bold[$GIT_BRANCH_COLOR]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) 🔥";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[$GIT_DIRTY_COLOR]%}) 🔥";
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[$GIT_CLEAN_COLOR]%})";
 
 function update_git_status() {
     GIT_STATUS=$(git_prompt_info);
@@ -82,9 +101,9 @@ function update_command_status() {
     export COMMAND_RESULT=$COMMAND_RESULT
     if $COMMAND_RESULT;
     then
-        arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
+        arrow="%{$fg_bold[$COMMAND_ARROW_1_COLOR]%}❱%{$fg_bold[$COMMAND_ARROW_2_COLOR]%}❱%{$fg_bold[$COMMAND_ARROW_3_COLOR]%}❱";
     else
-        arrow="%{$fg_bold[red]%}❱❱❱";
+        arrow="%{$fg_bold[$COMMAND_ARROW_ERROR]%}❱❱❱";
     fi
     COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
 }
@@ -107,16 +126,16 @@ output_command_execute_after() {
     local color_cmd="";
     if $1;
     then
-        color_cmd="$fg_no_bold[green]";
+        color_cmd="$fg_no_bold[$COMMAND_RESULT_SUCCESS_COLOR]";
     else
-        color_cmd="$fg_bold[red]";
+        color_cmd="$fg_bold[$COMMAND_RESULT_ERROR_COLOR]";
     fi
     local color_reset="$reset_color";
     cmd="${color_cmd}${cmd}${color_reset}"
 
     # time
-    local time="[$(date +%H:%M:%S)]"
-    local color_time="$fg_no_bold[cyan]";
+    local time="[$(date $COMMAND_RESULT_TIME_FORMAT)]"
+    local color_time="$fg_no_bold[$COMMAND_RESULT_TIME_COLOR]";
     time="${color_time}${time}${color_reset}";
 
     # cost
@@ -129,7 +148,7 @@ output_command_execute_after() {
         cost="0${cost}"
     fi
     cost="[cost ${cost}s]"
-    local color_cost="$fg_no_bold[cyan]";
+    local color_cost="$fg_no_bold[$COMMAND_RESULT_COST_COLOR]";
     cost="${color_cost}${cost}${color_reset}";
 
     echo -e "${time} ${cost} ${cmd}";
