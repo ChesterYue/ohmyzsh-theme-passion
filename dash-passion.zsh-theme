@@ -335,7 +335,7 @@ schedprompt() {
   # to avoid error messages).
   # Otherwise it updates on entry to zle, so there's no loss.
   if [ "$WIDGET" = "" ] || [ "$WIDGET" = "accept-line" ] ; then
-    zle && zle reset-prompt;
+    zle && zle .reset-prompt;
   fi
 
   # This ensures we're not too far off the start of the minute
