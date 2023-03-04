@@ -1,3 +1,12 @@
+# demo
+
+## warning
+
+make sure image refed by [External-themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes) exist;
+
+## cmd
+
+``` shell
 # mkdir demo
 # cd demo
 # mkdir demo-git
@@ -16,3 +25,4 @@ touch test.txt
 git st
 git add -A
 git ci -m "test"
+```
