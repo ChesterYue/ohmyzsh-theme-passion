@@ -97,7 +97,7 @@ function command_status() {
 
 # output command execute after
 output_command_execute_after() {
-    if [ "$COMMAND_TIME_BEIGIN" = "-20200325" ] || [ "$COMMAND_TIME_BEIGIN" = "" ];
+    if [ "$COMMAND_TIME_BEGIN" = "-20200325" ] || [ "$COMMAND_TIME_BEGIN" = "" ];
     then
         return 1;
     fi
@@ -121,8 +121,8 @@ output_command_execute_after() {
 
     # cost
     local time_end="$(current_time_millis)";
-    local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEIGIN}");
-    COMMAND_TIME_BEIGIN="-20200325"
+    local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEGIN}");
+    COMMAND_TIME_BEGIN="-20200325"
     local length_cost=${#cost};
     if [ "$length_cost" = "4" ];
     then
@@ -140,7 +140,7 @@ output_command_execute_after() {
 # command execute before
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
 preexec() {
-    COMMAND_TIME_BEIGIN="$(current_time_millis)";
+    COMMAND_TIME_BEGIN="$(current_time_millis)";
 }
 
 current_time_millis() {
