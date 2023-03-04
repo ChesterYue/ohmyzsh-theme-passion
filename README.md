@@ -26,13 +26,18 @@ REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Cust
 #### Color
 
 <!-- cspell:disable-next-line -->
-* iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors```: ![color.png](./image/color.png)
+* iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors``` ![color.png](./image/color.png)
 
 * alternate terminal: try [Alternate terminal installation and configuration](https://iterm2colorschemes.com/);
 
-### Status Bar
+#### Status Bar
 
-* iTerm2: settings -> Appearance && settings -> Profiles -> Session -> Configure Status Bar: ![status_0.png](./image/status_0.png) ![status_1.png](./image/status_1.png)
+* iTerm2: settings -> Appearance && settings -> Profiles -> Session -> Configure Status Bar ![status_0.png](./image/status_0.png) ![status_1.png](./image/status_1.png)
+
+#### Font
+
+* install [JetBrains Mono](https://www.jetbrains.com/lp/mono/);
+* iTerm2: settings -> Appearance && settings -> Profiles -> Text -> Font ![font.png](./image/font.png)
 
 ## Trouble Shooting
 
