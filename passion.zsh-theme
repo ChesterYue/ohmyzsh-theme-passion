@@ -198,7 +198,7 @@ setopt PROMPT_SUBST;
 #REF: https://stackoverflow.com/questions/26526175/zsh-menu-completion-causes-problems-after-zle-reset-prompt
 TMOUT=1;
 TRAPALRM() {
-    # $(git_prompt_info) cost too much time which will raise stutters when inputting. so we need to disable it in this occurence.
+    # $(git_prompt_info) cost too much time which will raise stutters when inputting. so we need to disable it in this occurrence.
     # if [ "$WIDGET" != "expand-or-complete" ] && [ "$WIDGET" != "self-insert" ] && [ "$WIDGET" != "backward-delete-char" ]; then
     # black list will not enum it completely. even some pipe broken will appear.
     # so we just put a white list here.
