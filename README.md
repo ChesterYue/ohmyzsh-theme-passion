@@ -21,7 +21,7 @@ An oh-my-zsh theme.
 3. modify rc: open ```~/.zshrc``` find ```ZSH_THEME``` edit to ```ZSH_THEME="passion"```;
 4. execute rc: ```source ~./zshrc```;
 
-REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes);
+* see also: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes);
 
 #### Trouble Shooting
 
