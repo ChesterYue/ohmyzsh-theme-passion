@@ -12,7 +12,12 @@ An oh-my-zsh theme.
 
 ## Usage
 
-REF: [Oh-My-Zsh External themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes)
+1. clone repo: ```git clone https://github.com/ChesterYue/ohmyzsh-theme-passion```;
+2. copy theme: ```cp ./ohmyzsh-theme-passion/passion.zsh-theme ~/.oh-my-zsh/themes/passion.zsh-theme```;
+3. modify config: open ```~/.zshrc``` edit to ```ZSH_THEME="passion"```;
+4. execute rc: ```source ~./zshrc```;
+
+REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes)
 
 ## Trouble Shooting
 
