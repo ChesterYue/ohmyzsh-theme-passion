@@ -28,12 +28,12 @@ REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Cust
 ##### macOS, command not found: gdate
 
 * passion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds. get ```gdate``` on macOS by running ```brew install coreutils``` then ```source ~./zshrc```;
-* see also: #12
+* see also: [#12](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/12);
 
 ##### Linux, command not found: bc
 
 * passion.zsh-theme depends on cmd ```bc``` to calculate the command running time cost. [get bc on Linux](https://www.tecmint.com/bc-command-examples/#:~:text=If%20you%20don%E2%80%99t%20have%20bc%20on%20your%20system%2C,command%20prompt%20and%20simply%20start%20calculating%20your%20expressions.) then ```source ~./zshrc```;
-* see also: #13
+* see also: [#13](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/13);
 
 ### Extra iTerm2 Preference
 
