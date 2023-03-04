@@ -1,14 +1,15 @@
 # ohmyzsh-theme-passion
 
-An oh-my-zsh theme.
+An oh-my-zsh theme;
 
 ## Introduction
 
+* real time prompt;
+* command running time cost prompt;
+* command running error hint;
 ![demo.png](./demo/demo.png)
 
-* real time prompt.
-* command running time cost prompt.
-* command running error hint.
+https://user-images.githubusercontent.com/8273263/222907643-5e1abdf3-9448-4363-94c8-8cb88518b4a7.mov
 
 ## Usage
 
