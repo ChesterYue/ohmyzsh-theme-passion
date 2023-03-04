@@ -21,7 +21,7 @@ An oh-my-zsh theme.
 
 REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes);
 
-### Extra iTerm Preference
+### Extra iTerm2 Preference
 
 #### Color
 
@@ -39,9 +39,14 @@ REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Cust
 * install [JetBrains Mono](https://www.jetbrains.com/lp/mono/);
 * iTerm2: settings -> Appearance && settings -> Profiles -> Text -> Font ![font.png](./image/font.png)
 
+#### Plugin
+
+* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions);
+* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting);
+
 ## Trouble Shooting
 
-### macOS
+### macOS gdate
 
 passion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds which is not installed by default in macOS.
 
