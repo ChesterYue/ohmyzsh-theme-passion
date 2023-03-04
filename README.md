@@ -37,7 +37,7 @@ An oh-my-zsh theme.
 
 ##### Centos 7, shell exit
 
-* may caused by set timer to zsh prompt by ```zle reset-prompt;```;
+* may caused by [set timer to zsh prompt by](https://github.com/ChesterYue/ohmyzsh-theme-passion/blob/8f71c43c2df91810249ab00ff40fc4ca63207467/passion.zsh-theme#L197-L208);
 * see also: [#4](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/4);
 
 ### Extra iTerm2 Preference
