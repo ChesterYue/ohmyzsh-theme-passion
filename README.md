@@ -23,12 +23,16 @@ REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Cust
 
 ### Extra iTerm Preference
 
-#### Config color
+#### Color
 
 <!-- cspell:disable-next-line -->
-* iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors```: ![color.png](./image/colors.png)
+* iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors```: ![color.png](./image/color.png)
 
-* alternate terminal: try [REF](https://iterm2colorschemes.com/);
+* alternate terminal: try [Alternate terminal installation and configuration](https://iterm2colorschemes.com/);
+
+### Status Bar
+
+* iTerm2: settings -> Appearance && settings -> Profiles -> Session -> Configure Status Bar: ![status_0.png](./image/status_0.png) ![status_1.png](./image/status_1.png)
 
 ## Trouble Shooting
 
