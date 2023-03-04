@@ -103,7 +103,7 @@ output_command_execute_after() {
     fi
 
     # cmd
-    local cmd="${$(fc -ln | tail -1)#*  }";
+    local cmd="$(fc -ln -1)";
     local color_cmd="";
     if $1;
     then
