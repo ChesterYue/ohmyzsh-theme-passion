@@ -4,7 +4,7 @@ An oh-my-zsh theme.
 
 ## Introduction
 
-![passion](./image/passion.gif)
+![demo.png](./demo/demo.png)
 
 * real time prompt.
 * command running time cost prompt.
