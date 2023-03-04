@@ -10,8 +10,6 @@ An oh-my-zsh theme;
 * git status prompt;
 ![demo.png](./demo/demo.png)
 
-https://user-images.githubusercontent.com/8273263/222907643-5e1abdf3-9448-4363-94c8-8cb88518b4a7.mov
-
 ## Usage
 
 ### Basic ZSH Theme
