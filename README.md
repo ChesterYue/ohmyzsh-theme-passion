@@ -1,14 +1,16 @@
 # ohmyzsh-theme-passion
 
-An oh-my-zsh theme;
-
 ## Introduction
+
+An oh-my-zsh theme;
+![demo.png](./demo/demo.png)
+
+### Feature
 
 * real time prompt;
 * command running time cost prompt;
 * command running error hint;
 * git status prompt;
-![demo.png](./demo/demo.png)
 
 ## Usage
 
