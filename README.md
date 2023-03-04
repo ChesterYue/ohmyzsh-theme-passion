@@ -14,7 +14,7 @@ An oh-my-zsh theme.
 
 ### Basic ZSH Theme
 
-#### Install theme
+#### Install
 
 1. clone repo: ```git clone https://github.com/ChesterYue/ohmyzsh-theme-passion```;
 2. copy theme: ```cp ./ohmyzsh-theme-passion/passion.zsh-theme ~/.oh-my-zsh/themes/passion.zsh-theme```;
