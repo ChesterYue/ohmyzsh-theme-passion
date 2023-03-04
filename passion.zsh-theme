@@ -139,7 +139,7 @@ output_command_execute_after() {
 
 # command execute before
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
-preexec() {
+preexec() { # cspell:disable-line
     COMMAND_TIME_BEGIN="$(current_time_millis)";
 }
 
@@ -168,7 +168,7 @@ current_time_millis() {
 
 # command execute after
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
-precmd() {
+precmd() { # cspell:disable-line
     # last_cmd
     local last_cmd_return_code=$?;
     local last_cmd_result=true;
@@ -191,13 +191,13 @@ precmd() {
 
 
 # set option
-setopt PROMPT_SUBST;
+setopt PROMPT_SUBST; # cspell:disable-line
 
 
 # timer
 #REF: https://stackoverflow.com/questions/26526175/zsh-menu-completion-causes-problems-after-zle-reset-prompt
 TMOUT=1;
-TRAPALRM() {
+TRAPALRM() { # cspell:disable-line
     # $(git_prompt_info) cost too much time which will raise stutters when inputting. so we need to disable it in this occurrence.
     # if [ "$WIDGET" != "expand-or-complete" ] && [ "$WIDGET" != "self-insert" ] && [ "$WIDGET" != "backward-delete-char" ]; then
     # black list will not enum it completely. even some pipe broken will appear.
