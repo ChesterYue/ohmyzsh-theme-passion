@@ -4,7 +4,7 @@ An oh-my-zsh theme.
 
 ## Introduction
 
-![passion](https://raw.githubusercontent.com/ChesterYue/ohmyzsh-theme-passion/master/passion.gif)
+![passion](./image/passion.gif)
 
 * real time prompt.
 * command running time cost prompt.
@@ -12,12 +12,23 @@ An oh-my-zsh theme.
 
 ## Usage
 
+### Basic ZSH Theme
+
 1. clone repo: ```git clone https://github.com/ChesterYue/ohmyzsh-theme-passion```;
 2. copy theme: ```cp ./ohmyzsh-theme-passion/passion.zsh-theme ~/.oh-my-zsh/themes/passion.zsh-theme```;
 3. modify rc: open ```~/.zshrc``` find ```ZSH_THEME``` edit to ```ZSH_THEME="passion"```;
 4. execute rc: ```source ~./zshrc```;
 
-REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes)
+REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes);
+
+### Extra iTerm Preference
+
+#### Config color
+
+<!-- cspell:disable-next-line -->
+* iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors```: ![color.png](./image/colors.png)
+
+* alternate terminal: try [REF](https://iterm2colorschemes.com/);
 
 ## Trouble Shooting
 
