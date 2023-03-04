@@ -14,6 +14,8 @@ An oh-my-zsh theme.
 
 ### Basic ZSH Theme
 
+#### Install theme
+
 1. clone repo: ```git clone https://github.com/ChesterYue/ohmyzsh-theme-passion```;
 2. copy theme: ```cp ./ohmyzsh-theme-passion/passion.zsh-theme ~/.oh-my-zsh/themes/passion.zsh-theme```;
 3. modify rc: open ```~/.zshrc``` find ```ZSH_THEME``` edit to ```ZSH_THEME="passion"```;
@@ -21,13 +23,24 @@ An oh-my-zsh theme.
 
 REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes);
 
+#### Trouble Shooting
+
+##### macOS, command not found: gdate
+
+* passion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds. get ```gdate``` on macOS by running ```brew install coreutils``` then ```source ~./zshrc```;
+* see also: #12
+
+##### Linux, command not found: bc
+
+* passion.zsh-theme depends on cmd ```bc``` to calculate the command running time cost. [get bc on Linux](https://www.tecmint.com/bc-command-examples/#:~:text=If%20you%20don%E2%80%99t%20have%20bc%20on%20your%20system%2C,command%20prompt%20and%20simply%20start%20calculating%20your%20expressions.) then ```source ~./zshrc```;
+* see also: #13
+
 ### Extra iTerm2 Preference
 
 #### Color
 
 <!-- cspell:disable-next-line -->
 * iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors``` ![color.png](./image/color.png)
-
 * alternate terminal: try [Alternate terminal installation and configuration](https://iterm2colorschemes.com/);
 
 #### Status Bar
@@ -43,11 +56,3 @@ REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Cust
 
 * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions);
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting);
-
-## Trouble Shooting
-
-### macOS gdate
-
-passion.zsh-theme depends on cmd ```gdate``` to get current time in milliseconds which is not installed by default in macOS.
-
-to get ```gdate``` by running ```brew install coreutils;```
