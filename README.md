@@ -7,6 +7,7 @@ An oh-my-zsh theme;
 * real time prompt;
 * command running time cost prompt;
 * command running error hint;
+* git status prompt;
 ![demo.png](./demo/demo.png)
 
 https://user-images.githubusercontent.com/8273263/222907643-5e1abdf3-9448-4363-94c8-8cb88518b4a7.mov
