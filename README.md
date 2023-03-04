@@ -35,6 +35,11 @@ An oh-my-zsh theme.
 * passion.zsh-theme depends on cmd ```bc``` to calculate the command running time cost. [get bc on Linux](https://www.tecmint.com/bc-command-examples/#:~:text=If%20you%20don%E2%80%99t%20have%20bc%20on%20your%20system%2C,command%20prompt%20and%20simply%20start%20calculating%20your%20expressions.) then ```source ~./zshrc```;
 * see also: [#13](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/13);
 
+##### Centos 7, shell exit
+
+* may caused by set timer to zsh prompt by ```zle reset-prompt;```;
+* see also: [#4](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/4);
+
 ### Extra iTerm2 Preference
 
 #### Color
