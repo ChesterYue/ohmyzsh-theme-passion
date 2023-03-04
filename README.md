@@ -14,7 +14,7 @@ An oh-my-zsh theme.
 
 1. clone repo: ```git clone https://github.com/ChesterYue/ohmyzsh-theme-passion```;
 2. copy theme: ```cp ./ohmyzsh-theme-passion/passion.zsh-theme ~/.oh-my-zsh/themes/passion.zsh-theme```;
-3. modify config: open ```~/.zshrc``` find ```ZSH_THEME``` edit to ```ZSH_THEME="passion"```;
+3. modify rc: open ```~/.zshrc``` find ```ZSH_THEME``` edit to ```ZSH_THEME="passion"```;
 4. execute rc: ```source ~./zshrc```;
 
 REF: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes)
