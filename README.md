@@ -14,7 +14,7 @@ An oh-my-zsh theme;
 
 ## Usage
 
-### Basic ZSH Theme
+### Basic Zsh Theme
 
 #### Install
 
@@ -42,24 +42,29 @@ An oh-my-zsh theme;
 * may caused by [set timer to zsh prompt](https://github.com/ChesterYue/ohmyzsh-theme-passion/blob/8f71c43c2df91810249ab00ff40fc4ca63207467/passion.zsh-theme#L197-L208);
 * see also: [#4](https://github.com/ChesterYue/ohmyzsh-theme-passion/issues/4);
 
-### Extra iTerm2 Preference
+<details> <!-- markdownlint-disable-line -->
+<summary><h3>Extra Preferences</h3></summary> <!-- markdownlint-disable-line -->
 
-#### Color
+#### Zsh Plugins
+
+1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions);
+2. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting);
+
+#### iTerm2 Preferences
+
+##### Color
 
 <!-- cspell:disable-next-line -->
 * iTerm2: settings -> Profiles -> Colors -> Color Presets -> import ```./passion.itermcolors``` ![color.png](./image/color.png)
 * alternate terminal: try [Alternate terminal installation and configuration](https://iterm2colorschemes.com/);
 
-#### Status Bar
+##### Status Bar
 
 * iTerm2: settings -> Appearance && settings -> Profiles -> Session -> Configure Status Bar ![status_0.png](./image/status_0.png) ![status_1.png](./image/status_1.png)
 
-#### Font
+##### Font
 
 * install [JetBrains Mono](https://www.jetbrains.com/lp/mono/);
 * iTerm2: settings -> Appearance && settings -> Profiles -> Text -> Font ![font.png](./image/font.png)
 
-#### Plugin
-
-* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions);
-* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting);
+</details> <!-- markdownlint-disable-line -->
