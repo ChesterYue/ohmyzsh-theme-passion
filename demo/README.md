@@ -4,14 +4,14 @@
 
 make sure image refed by [External-themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes) exist;
 
+## iTerm title
+
+Settings - Profiles - Window - Custom tab title - ohmyzsh-theme-passion
+
 ## cmd
 
 ``` shell
-# mkdir demo
-# cd demo
-# mkdir demo-git
-# cd demo-git
-# git init
+# mkdir demo; cd demo; mkdir demo-git; cd demo-git; git init;
 # git config --local user.name / user.email ...
 # cd ..
 
@@ -25,8 +25,6 @@ touch test.txt
 git st
 git add -A
 git ci -m "test"
+
+# enter twice
 ```
-
-## screenshot
-
-hide personal info.
