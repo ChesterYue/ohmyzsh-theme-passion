@@ -26,3 +26,7 @@ git st
 git add -A
 git ci -m "test"
 ```
+
+## screenshot
+
+hide personal info.
