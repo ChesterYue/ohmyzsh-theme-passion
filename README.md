@@ -4,7 +4,7 @@
 
 An oh-my-zsh theme.
 
-![demo.png](./reademe/demo.png)
+![demo.png](./readme/demo.png)
 
 ### Features
 
@@ -45,7 +45,7 @@ source path/to/where_u_want_to_clone_the_repo/simplerich-zsh-theme/zsh-git-promp
 - These must be BEFORE the line `source $ZSH/oh-my-zsh.sh` in `~/.zshrc`.
 - Change the path of `source .../zsh-git-prompt/zshrc.sh` according to your environment.
 - If you comment out `source .../zsh-git-prompt/zshrc.sh` or you cannot use `python` command, you can use a simpler git status like the following:  
-  ![simpler-git-status.png](./reademe/simpler-git-status.png)
+  ![simpler-git-status.png](./readme/simpler-git-status.png)
 
 1. Load ~/.zshrc.
 
@@ -88,16 +88,16 @@ See Also: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki
 <!-- cspell:disable-next-line -->
 
 - iTerm2: Settings -> Profiles -> Colors -> Color Presets -> Import `./simplerich.itermcolors`
-  ![color.png](./reademe/color.png)
+  ![color.png](./readme/color.png)
 - Alternate terminal: Try [Alternate terminal installation and configuration](https://iterm2colorschemes.com/).
 
 #### Status Bar
 
 - iTerm2: Settings -> Appearance && settings -> Profiles -> Session -> Configure Status Bar
-  ![status_0.png](./reademe/status_0.png) ![status_1.png](./reademe/status_1.png)
+  ![status_0.png](./readme/status_0.png) ![status_1.png](./readme/status_1.png)
 
 #### Font
 
 - Install [JetBrains Mono](https://www.jetbrains.com/lp/mono/).
 - iTerm2: Settings -> Appearance && settings -> Profiles -> Text -> Font
-  ![font.png](./reademe/font.png)
+  ![font.png](./readme/font.png)
