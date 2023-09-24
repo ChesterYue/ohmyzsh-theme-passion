@@ -47,7 +47,13 @@ source path/to/where_u_want_to_clone_the_repo/simplerich-zsh-theme/zsh-git-promp
 - If you comment out `source .../zsh-git-prompt/zshrc.sh` or you cannot use `python` command, you can use a simpler git status like the following:  
   ![simpler-git-status.png](./readme/simpler-git-status.png)
 
-1. Load ~/.zshrc.
+3. If you have installed Anaconda, remove the original display of the environment name.
+
+```shell
+conda config --set changeps1 False
+```
+
+4. Load ~/.zshrc.
 
 ```shell
 source ~/.zshrc
