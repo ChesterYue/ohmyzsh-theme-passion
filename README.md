@@ -2,7 +2,7 @@
 
 ## Overview
 
-An oh-my-zsh theme.
+simplerich-zsh-theme is an oh-my-zsh theme.
 
 ![demo.png](./readme/demo.png)
 
@@ -21,9 +21,23 @@ After command execution, you can see also:
 - Command Execution Time
 - Success/Error Hint
 
+## Git Status Symbols
+
+The git status is updated immediately after a command is finished or every 10 seconds after the terminal is started.
+
+| Symbol        | Meaning                                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `[main]`      | The repository is clean.                                                                                                    |
+| `[main +n]`   | There are n staged files.                                                                                                   |
+| `[main ●n]`   | There are n changed but unstaged files.                                                                                     |
+| `[main …n]`   | There are n untracked files.                                                                                                |
+| `[main xn]`   | There are n conflicting files.                                                                                              |
+| `[main n\|m]` | The local branch is m commits ahead and n commits behind the remote branch.                                                 |
+| `[main *]`    | This will be displayed instead of the informative symbols<br />when python cannot be executed and the repository not clean. |
+
 ## Install
 
-1. Clone Repo & Copy Theme.
+1. Clone the repository & copy the zsh-theme file.
 
 ```shell
 # cd path/to/where_u_want_to_clone_the_repo
