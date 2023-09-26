@@ -2,7 +2,7 @@
 
 ## Overview
 
-simplerich-zsh-theme is an oh-my-zsh theme.
+This is an oh-zsh-theme with informative git status, anaconda environment info and command execution time.
 
 ![demo.png](./readme/demo.png)
 
@@ -10,16 +10,16 @@ simplerich-zsh-theme is an oh-my-zsh theme.
 
 You can see the followings at once:
 
-- Real Time
-- Login User
-- Working Directory
-- Anaconda's Environment Name
-- Rich Git Status
+- Real time
+- Login user
+- Working directory
+- Anaconda's environment name
+- Rich git status
 
 After command execution, you can see also:
 
-- Command Execution Time
-- Success/Error Hint
+- Command execution time
+- Success/Error hint
 
 ## Git Status Symbols
 
@@ -73,7 +73,7 @@ conda config --set changeps1 False
 source ~/.zshrc
 ```
 
-See Also: [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes), [zsh-git-prompt](https://github.com/olivierverdier/zsh-git-prompt)
+See also [Overriding and adding themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-themes) and [zsh-git-prompt](https://github.com/olivierverdier/zsh-git-prompt).
 
 ## Trouble Shooting
 
