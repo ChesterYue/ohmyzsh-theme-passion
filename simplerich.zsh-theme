@@ -206,8 +206,12 @@ _simplerich_prompt() {
         echo "%n"
     }
 
-    anaconda_info() {
-        echo "%{$fg[magenta]%}(${CONDA_DEFAULT_ENV})%{$reset_color%}"
+    python_info() {
+        if [ -v CONDA_DEFAULT_ENV ]; then
+            echo "%{$fg[magenta]%}(${CONDA_DEFAULT_ENV})%{$reset_color%}"
+        elif [ -v VIRTUAL_ENV ]; then
+            echo "%{$fg[magenta]%}($(basename ${VIRTUAL_ENV}))%{$reset_color%}"
+        fi
     }
 
     directory_info() {
@@ -223,8 +227,8 @@ _simplerich_prompt() {
         echo "${_SIMPLERICH_COMMAND_STATUS}"
     }
 
-    if [ -v CONDA_DEFAULT_ENV ]; then
-        echo "$(real_time) $(user_info) $(anaconda_info) $(directory_info) $(git_info)
+    if [ -v CONDA_DEFAULT_ENV ] || [ -v VIRTUAL_ENV ]; then
+        echo "$(real_time) $(user_info) $(python_info) $(directory_info) $(git_info)
 $(command_status) "
     else
         echo "$(real_time) $(user_info) $(directory_info) $(git_info)
