@@ -61,7 +61,13 @@ source path/to/where_u_want_to_clone_the_repo/simplerich-zsh-theme/zsh-git-promp
 - If you comment out `source .../zsh-git-prompt/zshrc.sh` or you cannot use `python` command, you can use a simpler git status like the following:  
   ![simpler-git-status.png](./readme/simpler-git-status.png)
 
-3. If you have installed Anaconda, remove the original display of the environment name.
+3. If you use venv, remove the original display of the environment name.
+
+```shell
+echo "export VIRTUAL_ENV_DISABLE_PROMPT=1" >> ~/.zshrc
+```
+
+Or if you use Anaconda, run this:
 
 ```shell
 conda config --set changeps1 False
