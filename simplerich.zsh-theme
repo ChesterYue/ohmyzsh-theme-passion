@@ -210,7 +210,14 @@ _simplerich_prompt() {
         if [ -v CONDA_DEFAULT_ENV ]; then
             echo "%{$fg[magenta]%}(${CONDA_DEFAULT_ENV})%{$reset_color%}"
         elif [ -v VIRTUAL_ENV ]; then
-            echo "%{$fg[magenta]%}($(basename ${VIRTUAL_ENV}))%{$reset_color%}"
+            parent=$(dirname ${VIRTUAL_ENV})
+            if [[ "${PWD/#$parent/}" != "$PWD" ]]; then
+                # PWD is under the parent
+                echo "%{$fg[magenta]%}($(basename ${VIRTUAL_ENV}))%{$reset_color%}"
+            else
+                # PWD is not under the parent
+                echo "%{$fg[magenta]%}(${VIRTUAL_ENV/#$HOME/~})%{$reset_color%}"
+            fi
         fi
     }
 
