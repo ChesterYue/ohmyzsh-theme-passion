@@ -156,7 +156,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 git_super_status() {
-    precmd_update_git_vars
+    precmd_update_git_vars >/dev/null 2>&1
 
     if [ -z "$__CURRENT_GIT_STATUS" ]; then
         return
@@ -210,7 +210,7 @@ _simplerich_prompt() {
         if [ -v CONDA_DEFAULT_ENV ]; then
             echo "%{$fg[magenta]%}(${CONDA_DEFAULT_ENV})%{$reset_color%}"
         elif [ -v VIRTUAL_ENV ]; then
-            parent=$(dirname ${VIRTUAL_ENV})
+            local parent=$(dirname ${VIRTUAL_ENV})
             if [[ "${PWD/#$parent/}" != "$PWD" ]]; then
                 # PWD is under the parent
                 echo "%{$fg[magenta]%}($(basename ${VIRTUAL_ENV}))%{$reset_color%}"
