@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an oh-zsh-theme with informative git status, anaconda environment info and command execution time.
+This is an oh-my-zsh theme with informative git status, venv/Anaconda environment info and command execution time.
 
 ![demo.png](./readme/demo.png)
 
@@ -13,7 +13,7 @@ You can see the followings at once:
 - Real time
 - Login user
 - Working directory
-- Anaconda's environment name
+- Venv/Anaconda's environment name
 - Rich git status
 
 After command execution, you can see also:
