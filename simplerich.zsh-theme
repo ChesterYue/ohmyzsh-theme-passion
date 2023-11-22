@@ -133,10 +133,11 @@ TRAPALRM() { # cspell:disable-line
         _simplerich_update_git_info
     fi
 
-    _SIMPLERICH_PROMPT_CALLED_COUNT="$((_SIMPLERICH_PROMPT_CALLED_COUNT + 1))"
-    if [ "$_SIMPLERICH_PROMPT_CALLED_COUNT" -ge 10 ]; then
-        _SIMPLERICH_PROMPT_CALLED_COUNT=0
+    local count="$((_SIMPLERICH_PROMPT_CALLED_COUNT + 1))"
+    if [ "$count" -ge 10 ]; then
+        count=0
     fi
+    export _SIMPLERICH_PROMPT_CALLED_COUNT=$count
 }
 
 # git
