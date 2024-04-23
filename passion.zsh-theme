@@ -22,6 +22,7 @@ function real_time() {
     echo "${color}${time}${color_reset}";
 }
 
+
 # login_info
 function login_info() {
     local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
