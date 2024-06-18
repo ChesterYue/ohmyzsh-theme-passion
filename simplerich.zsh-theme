@@ -39,7 +39,7 @@ _simplerich_update_git_info() {
     if [ -n "$__CURRENT_GIT_STATUS" ]; then
         _SIMPLERICH_GIT_INFO=$(git_super_status)
     else
-        _SIMPLERICH_GIT_INFO=$(git_prompt_info)
+        _SIMPLERICH_GIT_INFO=$(_omz_git_prompt_info)
     fi
 }
 
